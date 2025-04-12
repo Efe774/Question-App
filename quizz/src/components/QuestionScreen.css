@@ -1,0 +1,270 @@
+.question-screen { /*soru ekranı ayarları*/
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 900px;
+  animation: fadeInQuestion 0.7s ease-out;
+  transition: transform var(--transition-fast), box-shadow var(--transition-medium);
+}
+
+.question-screen:hover { /*soru ekranı (hover) ayarları*/
+  box-shadow: 0 15px 40px rgba(67, 97, 238, 0.25);
+  transform: translateY(-3px);
+}
+
+@keyframes fadeInQuestion { /*animasyonu*/
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timer { /*zamanlayıcı*/
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.time-bar { /*zamanlayıcı barı*/
+  height: 10px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.time-progress { /*zamanlayıcı süreci*/
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 10px;
+  transition: width 1s linear;
+  position: relative;
+  overflow: hidden;
+}
+
+.time-progress::after { /*zamanlayıcı süreci (after)*/
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer { /*animasyonu*/
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.time-text { /*zaman yazısı*/
+  text-align: right;
+  margin-top: 5px;
+  font-weight: bold;
+  color: var(--primary-color);
+  letter-spacing: 0.5px;
+  transition: color var(--transition-fast);
+}
+
+.time-text.warning { /*zaman yazısı uyarısı*/
+  color: var(--warning-color);
+  animation: pulse 1s infinite;
+}
+
+.time-text.critical { /*zaman yazıısı kritik seviye*/
+  color: var(--error-color);
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse { /*animasyonu*/
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.question-container { /*soru kontainerı*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.question-text { /*soru yazısı*/
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: 700;
+  line-height: 1.3;
+  animation: slideInUp 0.6s ease-out;
+  position: relative;
+}
+
+@keyframes slideInUp { /*animasyonu*/
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+.question-image { /*soru resmi*/
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  animation: zoomIn 0.8s ease-out;
+}
+
+.question-image:hover { /*soru resmi (hover)*/
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes zoomIn {/*animasyonu*/
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.question-image img { /*soru resmi */
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--transition-medium);
+}
+
+.question-image:hover img { /*soru resmi (hover) */
+  transform: scale(1.03);
+}
+
+.options-container { /*seçeneekler ayarı */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.options-container.visible { /*seçenekler göründüğünde*/
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInOptions 0.6s ease-out;
+}
+
+@keyframes fadeInOptions { /*animasyonu*/
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.options-container.hidden { /*seçenekler hidden*/
+  pointer-events: none;
+}
+
+.option-button { /*seçenekler buttonu*/
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #5e60ce 100%);
+  color: white;
+  padding: 15px;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: var(--border-radius);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-medium);
+  box-shadow: 0 4px 12px rgba(95, 96, 206, 0.2);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.option-button::before { /*seçenekler button (before)*/
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #6c63ff 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--transition-medium);
+}
+
+.option-button:hover { /*seçenekler button (hover)*/
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(95, 96, 206, 0.3);
+}
+
+.option-button:hover::before { /*seçenekler button (hover+before)*/
+  opacity: 1;
+}
+
+
+@media (min-width: 1400px) { /*media ayarı*/
+  .question-screen {
+    max-width: 1200px;
+    padding: 50px;
+  }
+  
+  .question-text {
+    font-size: 2.5rem;
+    margin-bottom: 35px;
+  }
+  
+  .question-image {
+    max-width: 600px;
+  }
+  
+  .option-button {
+    font-size: 1.4rem;
+    min-height: 70px;
+  }
+  
+  .timer {
+    margin-bottom: 30px;
+  }
+  
+  .time-bar {
+    height: 12px;
+  }
+  
+  .time-text {
+    font-size: 1.1rem;
+  }
+}

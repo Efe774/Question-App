@@ -1,0 +1,352 @@
+.result-screen { /*sonuç ekranı görünyü ayarı */
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 900px;
+  animation: fadeInResult 0.8s ease-out;
+  transition: transform var(--transition-fast), box-shadow var(--transition-medium);
+}
+
+.result-screen:hover { /*sonuç ekranı (hover olduğunda) görünyü ayarı */
+  box-shadow: 0 15px 40px rgba(67, 97, 238, 0.25);
+  transform: translateY(-3px);
+}
+
+@keyframes fadeInResult { /*animasyonu*/
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-screen h1 { /*sonuç ekranı başlık */
+  color: var(--primary-color);
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+  animation: slideInDown 0.7s ease-out;
+}
+
+@keyframes slideInDown { /*animasyonu */
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-screen h1::after { /*sonuç ekranı başlık (after) görünyü ayarı */
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  bottom: -10px;
+  left: 20%;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  border-radius: 2px;
+  animation: expandWidth 1.5s ease-in-out;
+}
+
+.results-summary { /*resolt summaary görünyü ayarı */
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp { /*animasyonu */
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-item {/*sonuç ekranı itemleri görünyü ayarı */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  width: 30%;
+  color: white;
+  transition: all var(--transition-medium);
+  transform: translateY(0);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+ 
+.result-item::before { /*sonuç ekranı itemleri (before) görünyü ayarı */
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.result-item:hover { /*sonuç ekranı itemleri (hover) görüntü ayarı */
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.result-item.correct { /*sonuç ekranı itemler (doğru olduğunda) görüntü ayarı */
+  background: linear-gradient(135deg, var(--success-color) 0%, #2dd4bf 100%);
+}
+
+.result-item.incorrect { /*sonuç ekranı itemler (yanlış olduğunda) görüntü ayarı */
+  background: linear-gradient(135deg, var(--error-color) 0%, #f43f5e 100%);
+}
+
+.result-item.unanswered { /*sonuç ekranı itemler (cevaplanmadığında) görüntü ayarı */
+  background: linear-gradient(135deg, var(--warning-color) 0%, #fbbf24 100%);
+}
+
+.result-number { /*sonuç ekranı numara görüntü ayarı */
+  font-size: 3.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  position: relative;
+  animation: countUp 2s ease-out;
+}
+
+@keyframes countUp { /*animasyonu*/
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-label { /*resort label ayarı*/
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.questions-review { /*soru review ayarı*/
+  margin-top: 40px;
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.questions-review h2 { /*soru review başlık ayarı*/
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+  text-align: left;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.questions-review h2::after { /*soru review başlık (after) ayarı*/
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  bottom: 0;
+  left: 0;
+  transition: width var(--transition-medium);
+}
+
+.questions-review:hover h2::after { /*soru review (hover)(after) ayarı*/
+  width: 120px;
+}
+
+.question-result { /*soru sonuç ayarı*/
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 5px solid #ced4da;
+  transition: all var(--transition-medium);
+  transform: translateX(0);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  animation: slideInRight 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.question-result:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.question-result:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+@keyframes slideInRight { /*animasyonu*/
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.question-result:hover { /*soru sonuç (hover) ayarı*/
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.question-result.correct { /*soru sonuç (doğru) ayarı*/
+  border-left-color: var(--success-color);
+}
+
+.question-result.incorrect { /*soru sonuç (yanlış) ayarı*/
+  border-left-color: var(--error-color);
+}
+
+.question-result.unanswered { /*soru sonuç (boş) ayarı*/
+  border-left-color: var(--warning-color);
+}
+
+.question-text { /*soru yazısı ayarı*/
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.answer-details { /*cevap detayları ayarı*/
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.answer-details p { /*cevap detayları paragraf ayarı*/
+  margin: 5px 0;
+  flex: 0 0 48%;
+  position: relative;
+  padding-left: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.answer-details p:hover { /*cevap detayları paragraf (hover) ayarı*/
+  transform: translateX(3px);
+}
+
+.answer-details p::before { /*cevap detayları paragarf (before) ayarı*/
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+}
+
+.restart-button { /*restart butonu ayarları*/
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  font-size: 1.2rem;
+  padding: 15px 35px;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: bounceIn 0.8s ease-out 1s both;
+}
+
+@keyframes bounceIn { /*animasyon*/
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.restart-button::before { /*restart buttonu (before) ayarları*/
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--transition-medium);
+}
+
+.restart-button:hover { /*restart buttonu (hover) ayarları*/
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(67, 97, 238, 0.5);
+}
+
+.restart-button:hover::before { /*restart buttonu (hover+before) ayarları*/
+  opacity: 1;
+}
+
+@media (min-width: 1400px) { /*1400px media ayarları*/
+  .result-screen {
+    max-width: 1200px;
+    padding: 60px;
+  }
+  
+  .result-screen h1 {
+    font-size: 3.5rem;
+  }
+  
+  .result-number {
+    font-size: 4rem;
+  }
+  
+  .result-label {
+    font-size: 1.5rem;
+  }
+  
+  .questions-review h2 {
+    font-size: 2.2rem;
+  }
+  
+  .question-result {
+    padding: 25px;
+  }
+  
+  .question-text {
+    font-size: 1.4rem;
+  }
+  
+  .answer-details p {
+    font-size: 1.2rem;
+  }
+  
+  .restart-button {
+    font-size: 1.5rem;
+    padding: 18px 45px;
+  }
+}

@@ -1,0 +1,29 @@
+#root { /* boyut ve animasyon*/
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn { /*animasyon ayarı*/
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1400px) { /*medya 1400px ayarı*/
+  #root { 
+    max-width: 1280px; 
+    padding: 3rem;
+  }
+}
