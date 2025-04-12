@@ -46,7 +46,7 @@ Giriş ekranında:
 
 ---
 
-**Netlify Link** - 
+**Vercel Link** - [Vercel](question-app-umber-one.vercel.app)
 
 ## 📌 Geliştiren
 👨‍💻 **[Ad]** - [Saim Efe Omağ](https://github.com/Efe774)
